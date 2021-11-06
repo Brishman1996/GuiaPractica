@@ -1,9 +1,9 @@
 {
   "articulos": [
     {
-     "id": "cf4qaB9I",
-     "nombre": "Lavadora",
-     "precio": "1540.00",
+      "id": "cf4qaB9I",
+      "nombre": "Lavadora",
+      "precio": "1540.00",
       "marcar": "LG",
       "stock": "15"
     },
@@ -20,6 +20,13 @@
       "precio": "500.00",
       "marca": "Imaco",
       "stock": "26"
+    },
+    {
+      "id": "f5wmOm5s",
+      "nombre": "Secadordsdsa",
+      "precio": "13494900.00",
+      "marca": "Samsunvcfvcg",
+      "stock": "120"
     }
   ]
 }

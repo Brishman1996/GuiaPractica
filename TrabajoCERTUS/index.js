@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const low = require("lowdb");
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 const articulosRouter = require("./routes/articulo");
 
 const PORT = process.env.PORT || 10801;
@@ -13,7 +15,6 @@ const db = low(adapter);
 
 db.defaults({ articulos: [] }).write();
 
-const app = express();
 
 const options = {
     definition: {
@@ -31,14 +32,17 @@ const options = {
     },
     apis: ["./routers/*.js"],
 };
+const specs = swaggerJsDoc(options);
+
+const app = express();
+
+app.use("/api-docs", swaggerUI.server, swaggerUI.setup(specs));
 
 app.db = db;
 
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-app.use("articulos", articulosRouter);
+app.use("/articulos", articulosRouter);
 
 app.listen(PORT, () => console.log(`El servidor esta corriendo en el puerto ${PORT}`));
-
-
